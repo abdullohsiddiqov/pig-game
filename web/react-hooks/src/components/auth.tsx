@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate} from 'react-router-dom';
+import React, { useState} from 'react';
+import { useNavigate , useParams} from 'react-router-dom';
 import { IAuth, IEntity } from '../utils/types';
 import axios from 'axios';
 
@@ -16,6 +16,7 @@ async function handleAuth({ player1, player2, max }: IAuth.IPlayers) {
 
     const game = response.data as IEntity.IResponse;
     console.log("gameID: ", game);
+
 
     return game;
   } catch (error) {
@@ -48,7 +49,7 @@ export function Auth() {
       const game = await handleAuth({ player1, player2, max });
 
       if (game) {
-        navigate("/game", { state: { player1, player2 } });
+        navigate(`games/${game.data.id}`);
       } else {
         alert("Failed to register players");
       }

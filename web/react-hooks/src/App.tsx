@@ -9,9 +9,7 @@ const App = () => {
      <BrowserRouter>
         <Routes>
             <Route path='/' element={<Auth/>}/>
-          </Routes>
-          <Routes>
-            <Route path="/game" element={<Main/>}/>
+            <Route path="/games/:gameId" element={<Main/>}/>
           </Routes>
           </BrowserRouter>
      </div>
